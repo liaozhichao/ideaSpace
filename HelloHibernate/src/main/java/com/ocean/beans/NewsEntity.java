@@ -1,6 +1,7 @@
 package com.ocean.beans;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @Author: spring
@@ -12,7 +13,7 @@ public class NewsEntity {
     private String author;
     private String title;
     private String content;
-    private LocalDateTime date;
+    private Date date;
 
     public int getId() {
         return id;
@@ -46,11 +47,21 @@ public class NewsEntity {
         this.content = content;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public NewsEntity() {
+    }
+
+    public NewsEntity(String author, String title, String content, Date date) {
+        this.author = author;
+        this.title = title;
+        this.content = content;
         this.date = date;
     }
 
@@ -78,5 +89,16 @@ public class NewsEntity {
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "NewsEntity{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                '}';
     }
 }
